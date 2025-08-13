@@ -16,9 +16,14 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfigurations {
 
     @Bean
-    public SecurityFilterChain securtiyFilterChain(HttpSecurity http) throws Exception {
-        return http.csrf(crsf -> crsf.disable())
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        return http
+                .csrf(csrf -> csrf.disable())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/login").permitAll() // deixa o login livre
+                        .anyRequest().authenticated()
+                )
                 .build();
     }
 

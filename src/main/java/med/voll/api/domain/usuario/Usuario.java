@@ -9,7 +9,6 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
 
@@ -25,7 +24,19 @@ public class Usuario implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String login;
-    private String password;
+    private String senha;
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -34,7 +45,7 @@ public class Usuario implements UserDetails {
 
     @Override
     public String getPassword() {
-        return password;
+        return senha;
     }
 
     @Override
