@@ -14,7 +14,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 
 @RestController
-@RequestMapping("medicos")
+@RequestMapping("/medicos")
 public class MedicoController {
 
     @Autowired

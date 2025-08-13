@@ -20,10 +20,6 @@ public class SecurityConfigurations {
         return http
                 .csrf(csrf -> csrf.disable())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/login").permitAll() // deixa o login livre
-                        .anyRequest().authenticated()
-                )
                 .build();
     }
 
